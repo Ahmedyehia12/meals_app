@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:meals_app/widgets/meal_item_trait.dart';
+import 'package:meals_app/screens/meal_details.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({super.key, required this.meal});
@@ -16,6 +17,11 @@ class MealItem extends StatelessWidget {
         meal.affordability.name.substring(1);
   }
 
+  void _selectMeal(BuildContext context, Meal meal) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (ctx) => MealDetails(meal: meal)));
+  } // Navigate to a different screen but not updating the state
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,7 +30,9 @@ class MealItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge, // to inforce the shape
       elevation: 2,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          _selectMeal(context, meal);
+        },
         child: Stack(
           // stack ignores the shape on card
           children: [
@@ -38,7 +46,6 @@ class MealItem extends StatelessWidget {
               height: 200, // fixed height
               width: double.infinity, // take all available width
             ), // Faded In
-
             Positioned(
                 bottom: 0, // beginning at bottom
                 left: 0, // from left border

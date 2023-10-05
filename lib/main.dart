@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/categories.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meals_app/screens/tabs.dart';
 
 var kColorScheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(94, 170, 158, 158));
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const CategoriesScreen(),
+      home: const TabsScreen(),
       theme: ThemeData().copyWith(
           useMaterial3: true,
           colorScheme: kColorScheme,
