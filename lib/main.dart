@@ -3,7 +3,7 @@ import 'screens/categories.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 var kColorScheme =
-    ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 14, 5, 35));
+    ColorScheme.fromSeed(seedColor: const Color.fromARGB(94, 170, 158, 158));
 
 class App extends StatelessWidget {
   const App({super.key});
