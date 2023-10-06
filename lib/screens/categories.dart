@@ -5,8 +5,8 @@ import 'package:meals_app/screens/meals.dart';
 import 'package:meals_app/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
-
+  const CategoriesScreen({super.key, required this.toggleMeal});
+  final Function toggleMeal;
   void _selectCategory(BuildContext context, Category category) {
     // use of the Navigator class
     final categoryMeals = dummyMeals
@@ -15,8 +15,11 @@ class CategoriesScreen extends StatelessWidget {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (ctx) =>
-                MealsScreen(title: category.title, meals: categoryMeals)));
+            builder: (ctx) => MealsScreen(
+                  title: category.title,
+                  meals: categoryMeals,
+                  toggleMeal: toggleMeal,
+                )));
   } // Navigate to a different screen but not updating the state
 
   @override

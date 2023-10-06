@@ -3,12 +3,24 @@ import 'package:meals_app/models/meal.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealDetails extends StatelessWidget {
-  const MealDetails({super.key, required this.meal});
+  const MealDetails({super.key, required this.meal, required this.toggleMeal});
   final Meal meal;
+  final Function toggleMeal;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(meal.title)),
+      appBar: AppBar(
+        title: Text(meal.title),
+        actions: [
+          IconButton(
+            // to add the (meal) to the favourite meals
+            icon: const Icon(Icons.favorite_border),
+            onPressed: () {
+              toggleMeal(meal);
+            },
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: SingleChildScrollView(

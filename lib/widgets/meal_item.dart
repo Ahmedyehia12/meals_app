@@ -5,8 +5,9 @@ import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:meals_app/screens/meal_details.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+  const MealItem({super.key, required this.meal, required this.toggleMeal});
   final Meal meal;
+  final Function toggleMeal;
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
         meal.complexity.name.substring(1);
@@ -19,7 +20,12 @@ class MealItem extends StatelessWidget {
 
   void _selectMeal(BuildContext context, Meal meal) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (ctx) => MealDetails(meal: meal)));
+        context,
+        MaterialPageRoute(
+            builder: (ctx) => MealDetails(
+                  meal: meal,
+                  toggleMeal: toggleMeal,
+                )));
   } // Navigate to a different screen but not updating the state
 
   @override
