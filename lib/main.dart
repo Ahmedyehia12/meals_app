@@ -1,37 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meals_app/screens/tabs.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-var kColorScheme =
-    ColorScheme.fromSeed(seedColor: Color.fromARGB(94, 145, 11, 11));
+import 'package:meals/screens/tabs.dart';
+
+final theme = ThemeData(
+  useMaterial3: true,
+  colorScheme: ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    seedColor: const Color.fromARGB(255, 131, 57, 0),
+  ),
+  textTheme: GoogleFonts.latoTextTheme(),
+);
+
+void main() {
+  runApp(const ProviderScope(child: App()));
+}
 
 class App extends StatelessWidget {
   const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      theme: theme,
       home: const TabsScreen(),
-      theme: ThemeData().copyWith(
-          useMaterial3: true,
-          colorScheme: kColorScheme,
-          appBarTheme: const AppBarTheme().copyWith(
-            backgroundColor: kColorScheme.onPrimaryContainer,
-            foregroundColor: kColorScheme.primaryContainer,
-          ),
-          textTheme: ThemeData().textTheme.copyWith(
-                titleLarge: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontStyle: GoogleFonts.lato().fontStyle,
-                  color: const Color.fromARGB(255, 19, 4, 54),
-                  fontSize: 19.0,
-                ),
-              )),
-      themeMode: ThemeMode.system,
     );
   }
-}
-
-void main() {
-  runApp(const App());
 }
