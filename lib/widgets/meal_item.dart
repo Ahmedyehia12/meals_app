@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-
 import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:meals/models/meal.dart';
 
@@ -39,31 +38,39 @@ class MealItem extends StatelessWidget {
         },
         child: Stack(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-              height: 200,
-              width: double.infinity,
+            Hero(
+              // animate widgets accross different screens
+              tag: meal.id, // unique tag per widget , meal.id is unique.
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(meal.imageUrl),
+                fit: BoxFit.cover,
+                height: 200,
+                width: double.infinity,
+              ),
             ),
             Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
+              bottom: 0, // means the bottom of the stack
+              left: 0, // means the left of the stack
+              right: 0, // means the right of the stack
               child: Container(
-                color: Colors.black54,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 44),
+                // this container will be the bottom of the stack
+                color: Colors.black54, // black with 54% opacity
+                padding: const EdgeInsets.symmetric(
+                    vertical: 6,
+                    horizontal: 44), // 6px top and bottom, 44px left and right
                 child: Column(
+                  // this column will be the bottom of the stack
                   children: [
                     Text(
-                      meal.title,
-                      maxLines: 2,
+                      meal.title, // title of the meal
+                      maxLines: 2, // max 2 lines
                       textAlign: TextAlign.center,
-                      softWrap: true,
+                      softWrap: true, // wrap the text when it's too long
                       overflow: TextOverflow.ellipsis, // Very long text ...
                       style: const TextStyle(
-                        fontSize: 20,
+                        // style of the text
+                        fontSize: 20, // 20px
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),

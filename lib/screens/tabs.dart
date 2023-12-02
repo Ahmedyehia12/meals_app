@@ -43,7 +43,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     final availableMeals = ref.watch(filteredMealsProvider);
-
     Widget activePage = CategoriesScreen(
       availableMeals: availableMeals,
     );
@@ -55,7 +54,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       );
       activePageTitle = 'Your Favorites';
     }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(activePageTitle),
